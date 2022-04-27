@@ -1,8 +1,6 @@
 import requests
 import sys
 
-print(sys.argv)
-sys.exit()
 
 targetDir = sys.argv[0]
 
