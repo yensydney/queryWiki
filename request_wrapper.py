@@ -176,16 +176,19 @@ class RequestWrapper:
 
         return ret_json
 
-def guide():
-    print("Option 1 (query all): $ python3", sys.argv[0], "<'all'> <entity-name>")
-    print("ex. $ python3", sys.argv[0], 'all "New York"')
-    print()
-    print("Option 2 (query ca only): $ python3", sys.argv[0], "<'ca'> <entity-name>")
-    print("ex. $ python3", sys.argv[0], 'ca "San Diego"')
-    print()
-    print("Option 3 (query nearby query): $ python3", sys.argv[0], "<'nearby'> <QID>")
-    print("ex. $ python3", sys.argv[0], 'nearby Q370771')
-    print()
+    def guide():
+        print()
+        print("Wrong format! See below.")
+        print()
+        print("Option 1 (query all): $ python3", sys.argv[0], "<'all'> <entity-name>")
+        print("ex. $ python3", sys.argv[0], 'all "New York"')
+        print()
+        print("Option 2 (query ca only): $ python3", sys.argv[0], "<'ca'> <entity-name>")
+        print("ex. $ python3", sys.argv[0], 'ca "San Diego"')
+        print()
+        print("Option 3 (query nearby query): $ python3", sys.argv[0], "<'nearby'> <QID>")
+        print("ex. $ python3", sys.argv[0], 'nearby Q370771')
+        print()
 
 
 
@@ -213,15 +216,18 @@ if __name__ == '__main__':
     # print(result2)
 
     #more user friendly version
-    if sys.argv[1] == "all":
-        result = example.wikidata_query(sys.argv[2])
-        print(result)
-    elif sys.argv[1] == "ca":
-        result = example.wikidata_query_withinstate(sys.argv[2])
-        print(result)
-    elif sys.argv[1] == "nearby":
-        result = example.wikidata_nearby_query(sys.argv[2])
-        print(result)
+    if len(sys.argv) >= 2:
+        if sys.argv[1] == "all":
+            result = example.wikidata_query(sys.argv[2])
+            print(result)
+        elif sys.argv[1] == "ca":
+            result = example.wikidata_query_withinstate(sys.argv[2])
+            print(result)
+        elif sys.argv[1] == "nearby":
+            result = example.wikidata_nearby_query(sys.argv[2])
+            print(result)
+        else:
+            guide()
     else:
         guide()
 
